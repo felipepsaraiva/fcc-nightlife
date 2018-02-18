@@ -1,0 +1,40 @@
+{
+  "name": "fcc-nightlife",
+  "version": "1.0.0",
+  "description": "Nightlife coordination app where you can see popular places to go near you and indicate where you're going",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipepsaraiva/fcc-nightlife.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felipepsaraiva/fcc-nightlife/issues"
+  },
+  "homepage": "https://github.com/felipepsaraiva/fcc-nightlife#readme",
+  "engines": {
+    "node": "8.x"
+  },
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server",
+    "build-client": "neutrino build",
+    "start-client": "neutrino start",
+    "lint-client": "neutrino lint"
+  },
+  "keywords": [],
+  "author": "felipepsaraiva",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "@neutrinojs/airbnb": "^8.1.1",
+    "@neutrinojs/react": "^8.1.1",
+    "neutrino": "^8.1.1"
+  }
+}
