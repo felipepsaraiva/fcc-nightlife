@@ -1,7 +1,7 @@
 {
   "name": "fcc-nightlife",
   "version": "1.0.0",
-  "description": "Nightlife coordination app where you can see popular places to go near you and indicate where you're going",
+  "description": "Nightlife coordination app where you can see popular places near you and indicate where you're going",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felipepsaraiva/fcc-nightlife.git"
