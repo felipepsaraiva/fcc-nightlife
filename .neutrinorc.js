@@ -10,7 +10,9 @@ module.exports = {
       {
         eslint: {
           rules: {
-            'function-paren-newline': 'off'
+            'function-paren-newline': 'off',
+            'no-unused-vars': 1,
+            'react/forbid-prop-types': [2, { forbid: ['any'] }]
           }
         }
       }

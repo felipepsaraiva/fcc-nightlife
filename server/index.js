@@ -1,18 +1,47 @@
-import dotenv from 'dotenv';
-import express from 'express';
-
-
 /**
  * Environment Variables:
  *  NODE_ENV: 'production' | 'development'
- *  DB_ENV: 'production' | 'development' (Access collections with dev prefix)
  *  MONGO_URI: URI to access the database
+ *  YELP_KEY: Yelp API key
  *  SECRET: JWT Secret
  */
-dotenv.config();
+require('dotenv').config();
+
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
+// const mongoose = require('mongoose');
 
 
+/**
+ * Connect to MongoDB
+*/
+// mongoose.Promise = global.Promise;
+// mongoose.connect(process.env.MONGO_URI);
+// mongoose.connection.on('error', () => {
+//   console.log('Unable to connect to MongoDB');
+//   process.exit();
+// });
+
+
+/**
+ * Express Configuration
+ */
 const app = express();
+app.set('port', process.env.PORT || 3000);
+
+app.use(morgan('dev'));
+app.use(express.json());
+// app.use('/', express.static(path.join(__dirname, 'public')));
+
+app.use('/api', require('./api'));
+
 app.get('/*', (req, res) => {
-  res.sendFile('../client/build/index.html');
+  res.sendFile(path.resolve('..', 'client', 'build', 'index.html'));
+});
+
+app.listen(app.get('port'), () => {
+  console.log(`Node Environment: ${process.env.NODE_ENV}`);
+  console.log(`Port: ${app.get('port')}`);
+  console.log('App is running...\n');
 });
