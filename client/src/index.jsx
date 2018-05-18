@@ -1,9 +1,9 @@
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
-import Reboot from 'material-ui/Reboot';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import { deepPurple, grey } from 'material-ui/colors';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { deepPurple, grey } from '@material-ui/core/colors';
 import App from './App';
 import './global.css';
 
@@ -21,7 +21,7 @@ const load = () => render((
   <AppContainer>
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
-        <Reboot />
+        <CssBaseline />
         <App />
       </MuiThemeProvider>
     </BrowserRouter>
