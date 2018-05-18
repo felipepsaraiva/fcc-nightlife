@@ -1,21 +1,20 @@
 import { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
 import Api from './Api';
 import HomePage from './HomePage';
+import BusinessPage from './BusinessPage';
 import LocalStorage from './LocalStorage';
 
 const styles = {
-  title: {
-    flex: 1,
-    textTransform: 'capitalize',
+  btn: {
+    position: 'absolute',
+    right: 15,
+    top: 15,
   },
 };
 
@@ -41,14 +40,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (this.state.location) this.onSearch(this.state.location);
-
-    window.onscroll = () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 300) {
-        const { total, businesses, loading } = this.state;
-        if (!loading && total > businesses.length) this.onRequireMore();
-      }
-    };
+    if (this.state.location && !this.state.businesses.length) {
+      this.onSearch(this.state.location);
+    }
   }
 
   onSearch(location) {
@@ -88,6 +82,7 @@ class App extends Component {
   render() {
     const {
       location,
+      total,
       businesses,
       loading,
       error,
@@ -96,30 +91,37 @@ class App extends Component {
 
     return (
       <div>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.title} noWrap>
-              Nightlife {this.state.location}
-            </Typography>
-            <Button color="secondary" variant="raised">Sign in</Button>
-          </Toolbar>
-        </AppBar>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <HomePage
+              location={location}
+              total={total}
+              businesses={businesses}
+              loading={loading}
+              error={!!error}
+              onSearch={this.onSearch}
+              onRequireMore={this.onRequireMore}
+            />
+          )}
+        />
 
-        <div>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <HomePage
-                location={location}
-                businesses={businesses}
-                loading={loading}
-                error={!!error}
-                onSearch={this.onSearch}
-              />
-            )}
-          />
-        </div>
+        <Switch style={{ backgroundColor: 'green' }}>
+          <Route path="/profile" render={() => 'Profile'} />
+          <Route path="/:id" component={BusinessPage} />
+        </Switch>
+
+        <Route
+          render={route => (
+            route.location.pathname.startsWith('/profile')
+            || (
+              <Button className={classes.btn} color="primary" variant="fab">
+                <i className="fab fa-twitter" />
+              </Button>
+            )
+          )}
+        />
       </div>
     );
   }

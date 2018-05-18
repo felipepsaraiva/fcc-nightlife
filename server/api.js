@@ -53,6 +53,13 @@ route.get('/search', (req, res, next) => {
   }).catch(next);
 });
 
+route.get('/business/:id', (req, res, next) => {
+  const id = encodeURIComponent(req.params.id);
+  yelp.get(id).then((response) => {
+    res.json(response.data);
+  }).catch(next);
+});
+
 /**
  * ERROR HANDLER
  * Error types: ServerError, AuthenticationError, InvalidIdError, BadRequest

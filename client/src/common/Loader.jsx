@@ -13,12 +13,13 @@ const Loader = ({ className, render, typography }) => {
 
 Loader.propTypes = {
   className: PropTypes.string,
-  render: PropTypes.bool.isRequired,
+  render: PropTypes.bool,
   typography: PropTypes.object,
 };
 
 Loader.defaultProps = {
   className: '',
+  render: true,
   typography: {
     align: 'center',
     variant: 'display2',
