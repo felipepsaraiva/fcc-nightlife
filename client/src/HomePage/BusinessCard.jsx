@@ -9,8 +9,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import YelpRating from '../common/YelpRating';
 
-// TODO: Change button position to right
-
 const styles = theme => ({
   img: { height: 200 },
   title: {

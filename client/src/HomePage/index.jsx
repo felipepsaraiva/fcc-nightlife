@@ -27,7 +27,7 @@ const styles = theme => ({
     },
   },
   loader: {
-    marginTop: 2 * theme.spacing.unit,
+    marginTop: 5 * theme.spacing.unit,
     marginBottom: 2 * theme.spacing.unit,
   },
 });
