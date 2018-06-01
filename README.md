@@ -6,7 +6,7 @@ Web App where you can see popular places near you and indicate where you're goin
 
 ### User Stories
 
-* :black_square_button: As an unauthenticated user, I can view all bars in my area.
+* :ballot_box_with_check: As an unauthenticated user, I can view all bars in my area.
 * :black_square_button: As an authenticated user, I can add myself to a bar to indicate I am going there tonight.
 * :black_square_button: As an authenticated user, I can remove myself from a bar if I no longer want to go there.
 * :black_square_button: As an unauthenticated user, when I login I should not have to search again.
