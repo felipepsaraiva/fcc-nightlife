@@ -1,6 +1,6 @@
 export default class Api {
   // TODO: Remove domain
-  static baseUrl = '//localhost:3000/api';
+  static baseUrl = (process.env.NODE_ENV === 'development' ? '//localhost:3000/api' : '/api');
 
   static getQueryString = (params) => {
     const esc = encodeURIComponent;
